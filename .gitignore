@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -172,3 +173,47 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+=======
+venv
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.env
+*.venv/
+*.log
+
+
+venv/
+ENV/
+env/
+.venv/
+
+
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+local_settings.py
+
+
+.vscode/
+
+
+.DS_Store
+Thumbs.db
+
+
+.git/
+
+
+.env
+*.secret
+*.pem
+
+**/migrations/*.pyc
+**/migrations/__pycache__/
+
+node_modules/
+>>>>>>> master
