@@ -197,7 +197,7 @@ media/
 staticfiles/
 local_settings.py
 
-
+settings.py
 .vscode/
 
 
@@ -218,3 +218,4 @@ Thumbs.db
 node_modules/
 >>>>>>> master
 .env
+NoteAI/settings.py
