@@ -16,8 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from quizGen import views
+from quizGen import views as qgviews
+from pdfconverter import views as pdfviews
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('action/quiz-generator',views.generate_quiz)
+    path('action/quiz-generator',qgviews.generate_quiz),
+    path('',qgviews.home),path('action/pdf-converter',pdfviews)
 ]
