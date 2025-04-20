@@ -21,5 +21,5 @@ from pdfconverter import views as pdfviews
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('action/quiz-generator',qgviews.generate_quiz),
-    path('',qgviews.home),path('action/pdf-converter',pdfviews)
+    path('',qgviews.home),path('action/pdf-converter',pdfviews.home)
 ]

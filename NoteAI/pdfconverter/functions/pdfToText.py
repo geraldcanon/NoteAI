@@ -29,15 +29,17 @@ except ImportError:
     import textract
 
 
-def extract_from_pdf(file_path):
-    """Extract text from PDF files."""
-    with open(file_path, 'rb') as file:
-        pdf_reader = PyPDF2.PdfReader(file)
-        text = ""
-        for page_num in range(len(pdf_reader.pages)):
-            page = pdf_reader.pages[page_num]
-            text += page.extract_text() + "\n"
-        return text
+import PyPDF2
+
+def extract_from_pdf(file):
+    """Extract text from a PDF file-like object."""
+    pdf_reader = PyPDF2.PdfReader(file)
+    text = ""
+    for page in pdf_reader.pages:
+        page_text = page.extract_text()
+        if page_text:
+            text += page_text + "\n"
+    return text
 
 
 def extract_from_docx(file_path):

@@ -25,9 +25,9 @@ def generate_quiz(request):
 
             
             completion = client.chat.completions.create(
-                model="meta-llama/llama-4-scout-17b-16e-instruct",
+                model="deepseek-r1-distill-llama-70b",
                 messages=[{"role": "user", "content": prompt}],
-                temperature=1,
+                temperature=0.6,
                 max_tokens=1024,
                 top_p=1,
                 stream=False,
