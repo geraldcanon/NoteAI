@@ -1,11 +1,10 @@
-from django.shortcuts import render
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
+from NoteAI.function.fetchAI import fetchAI
+
 from django.http import JsonResponse
-from groq import Groq
+
 from dotenv import load_dotenv
 import json
-import os
+
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 load_dotenv()
@@ -20,20 +19,8 @@ def generate_quiz(request):
             if not prompt:
                 return(JsonResponse({'error':'no prompt'},status=400))
             
+            res = fetchAI(prompt)
 
-            client = Groq(api_key=os.getenv("api_key"))
-
-            
-            completion = client.chat.completions.create(
-                model="deepseek-r1-distill-llama-70b",
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.6,
-                max_tokens=1024,
-                top_p=1,
-                stream=False,
-                stop=None,
-            )
-            res = completion.choices[0].message.content
             return JsonResponse({'quiz': res})
 
         except Exception as e:

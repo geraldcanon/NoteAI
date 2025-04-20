@@ -18,8 +18,11 @@ from django.contrib import admin
 from django.urls import path
 from quizGen import views as qgviews
 from pdfconverter import views as pdfviews
+from imageconverter import views as imageviews
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('action/quiz-generator',qgviews.generate_quiz),
-    path('',qgviews.home),path('action/pdf-converter',pdfviews.home)
+    path('',qgviews.home),path('action/pdf-converter',pdfviews.home),
+    path('action/image-converter',imageviews.imageconverter)
+
 ]
