@@ -23,6 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('action/quiz-generator',qgviews.generate_quiz),
     path('',qgviews.home),path('action/pdf-converter',pdfviews.home),
-    path('action/image-converter',imageviews.imageconverter)
+    
 
 ]

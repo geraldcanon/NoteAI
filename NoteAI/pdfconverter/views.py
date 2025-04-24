@@ -5,6 +5,7 @@ from pdfconverter.functions.pdfToText import extract_from_pdf as pdfConverter
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from NoteAI.function.fetchAI import fetchAI
+from imageconverter.views import convert
 
 @csrf_exempt
 def home(request):
@@ -13,9 +14,11 @@ def home(request):
             file = request.FILES.get('file')
             if not file:
                 return JsonResponse({"error": "No file uploaded"}, status=400)
-
             if file.name.endswith('.pdf'):
                data = pdfConverter(file)
+            elif file.name.lower().endswith(('png','jpeg','jpg')):
+
+                data=convert(file)
 
             elif file.name.endswith('.docx'):
                 data = docsConverter(file)
@@ -23,10 +26,12 @@ def home(request):
                 return JsonResponse({"error": "Unsupported file type"}, status=400)
 
             prompt = (
-            "Clearly explain the following topic in a formal, informative style. Do not use first-person phrases like 'I think' or 'I'm trying to understand'. Focus entirely on delivering a structured, professional explanation without conversational or reflective language: "
+            "Clearly explain the following topic in a formal, informative style. Do not use first-person phrases like 'I think' or 'I'm trying to understand'. Focus entirely on delivering a structured, professional explanation without conversational or reflective language Also Below Add a extremely detailed notes  then expand it in a way that any can grasp in bullet form the label should be 'explanation' in the bullet explanation: "
             + data
         )
             res = fetchAI(prompt)
+            print(file.name)
+            print(res)
 
 
      
